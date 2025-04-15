@@ -12,6 +12,7 @@
 // Sets default values
 ACPT_CoinPickupActor::ACPT_CoinPickupActor()
 {
+	//Setting Up collider
 	ColliderComponent = CreateDefaultSubobject<USphereComponent>("ColliderComponent");
 	SetRootComponent(ColliderComponent);
 	ColliderComponent->SetGenerateOverlapEvents(true);
@@ -22,7 +23,7 @@ ACPT_CoinPickupActor::ACPT_CoinPickupActor()
 	ColliderComponent->OnComponentBeginOverlap.AddDynamic(
 		this, &ACPT_CoinPickupActor::OnBeginOverlapComponentEvent
 	);
-
+	//Setting Static Mesh
 	MeshComponent = CreateDefaultSubobject<UStaticMeshComponent>("MeshComponent");
 	MeshComponent->SetupAttachment(ColliderComponent);
 	MeshComponent->SetCollisionEnabled(ECollisionEnabled::NoCollision);
@@ -38,13 +39,13 @@ void ACPT_CoinPickupActor::OnBeginOverlapComponentEvent(
 )
 {
 	if (!Cast<ACharacter>(OtherActor)) return;
-
+	//Adding Sound Component
 	if (PickSound)
 	{
 		UGameplayStatics::PlaySoundAtLocation(
 			this, PickSound, GetActorLocation(), VolumeMultiplier);
 	}
-
+	//Adding VFX Component
 	if (OnPickupEffect)
 	{
 		const FVector Offset = GetActorUpVector() * PickEffectSpawnOffset;
