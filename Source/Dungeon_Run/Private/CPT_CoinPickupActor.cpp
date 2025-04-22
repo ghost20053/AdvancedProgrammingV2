@@ -7,7 +7,8 @@
 #include "GameFramework/RotatingMovementComponent.h"
 #include "Kismet/GameplayStatics.h"
 
-#include "C:\Program Files\Epic Games\UE_5.4\Engine\Plugins\FX\Niagara\Source\Niagara\Public\NiagaraFunctionLibrary.h"
+//#include "C:\Program Files\Epic Games\UE_5.4\Engine\Plugins\FX\Niagara\Source\Niagara\Public\NiagaraFunctionLibrary.h"
+#include "NiagaraFunctionLibrary.h"
 
 // Sets default values
 ACPT_CoinPickupActor::ACPT_CoinPickupActor()
